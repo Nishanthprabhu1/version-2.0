@@ -1,4 +1,4 @@
-/* script.js - Jewels-Ai Atelier: Back Camera Update for Rings/Bangles */
+/* script.js - Jewels-Ai Atelier: Earrings Lifted Up */
 
 /* --- CONFIGURATION --- */
 const API_KEY = "AIzaSyAXG3iG2oQjUA_BpnO8dK8y-MHJ7HLrhyE"; 
@@ -291,8 +291,23 @@ faceMesh.onResults((results) => {
       const distToLeft = Math.hypot(nose.x - leftEar.x, nose.y - leftEar.y);
       const distToRight = Math.hypot(nose.x - rightEar.x, nose.y - rightEar.y);
       const ratio = distToLeft / (distToLeft + distToRight);
-      if (ratio > 0.2) { canvasCtx.save(); canvasCtx.translate(leftEar.x, leftEar.y); canvasCtx.rotate(physics.earringAngle); canvasCtx.drawImage(earringImg, -ew/2, 0, ew, eh); canvasCtx.restore(); }
-      if (ratio < 0.8) { canvasCtx.save(); canvasCtx.translate(rightEar.x, rightEar.y); canvasCtx.rotate(physics.earringAngle); canvasCtx.drawImage(earringImg, -ew/2, 0, ew, eh); canvasCtx.restore(); }
+
+      // --- EARRING PLACEMENT UPDATE ---
+      // Changed '0' to '-eh * 0.15' to lift earrings higher up
+      if (ratio > 0.2) { 
+          canvasCtx.save(); 
+          canvasCtx.translate(leftEar.x, leftEar.y); 
+          canvasCtx.rotate(physics.earringAngle); 
+          canvasCtx.drawImage(earringImg, -ew/2, -eh * 0.15, ew, eh); 
+          canvasCtx.restore(); 
+      }
+      if (ratio < 0.8) { 
+          canvasCtx.save(); 
+          canvasCtx.translate(rightEar.x, rightEar.y); 
+          canvasCtx.rotate(physics.earringAngle); 
+          canvasCtx.drawImage(earringImg, -ew/2, -eh * 0.15, ew, eh); 
+          canvasCtx.restore(); 
+      }
     }
     if (necklaceImg && necklaceImg.complete) {
       let nw = earDist * 0.85; let nh = (necklaceImg.height/necklaceImg.width) * nw;
