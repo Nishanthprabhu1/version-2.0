@@ -1,4 +1,4 @@
-/* script.js - Jewels-Ai Atelier: Earrings Lifted Up */
+/* script.js - Jewels-Ai Atelier: Earrings Lifted 20% */
 
 /* --- CONFIGURATION --- */
 const API_KEY = "AIzaSyAXG3iG2oQjUA_BpnO8dK8y-MHJ7HLrhyE"; 
@@ -293,19 +293,19 @@ faceMesh.onResults((results) => {
       const ratio = distToLeft / (distToLeft + distToRight);
 
       // --- EARRING PLACEMENT UPDATE ---
-      // Changed '0' to '-eh * 0.15' to lift earrings higher up
+      // Changed '-eh * 0.15' to '-eh * 0.20' (total 20% shift up)
       if (ratio > 0.2) { 
           canvasCtx.save(); 
           canvasCtx.translate(leftEar.x, leftEar.y); 
           canvasCtx.rotate(physics.earringAngle); 
-          canvasCtx.drawImage(earringImg, -ew/2, -eh * 0.15, ew, eh); 
+          canvasCtx.drawImage(earringImg, -ew/2, -eh * 0.20, ew, eh); 
           canvasCtx.restore(); 
       }
       if (ratio < 0.8) { 
           canvasCtx.save(); 
           canvasCtx.translate(rightEar.x, rightEar.y); 
           canvasCtx.rotate(physics.earringAngle); 
-          canvasCtx.drawImage(earringImg, -ew/2, -eh * 0.15, ew, eh); 
+          canvasCtx.drawImage(earringImg, -ew/2, -eh * 0.20, ew, eh); 
           canvasCtx.restore(); 
       }
     }
